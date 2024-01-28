@@ -3,22 +3,22 @@
 ### Run the following commands to get started:
 
 ```
-git clone https://github.com/badrkamel/Simple-Task-Management-System.git
-virtualenv env
+git clone https://github.com/MaulikZalavadiya/multiminda_task.git Task_Management_System
+python3 -m venv venv
 ```
 #### Activate the virtual environment
 
-Mac OS / Linux
+Mac OS / Windows
 ```source env/bin/activate```
 
-Windows
+Linux
 ```.\env\Scripts\activate```
 
 ```
-cd Simple-Task-Management-System
+cd Task_Management_System
 pip install -r requirements.txt
-python manage.py migrate
-python manage.py runserver
+python3 manage.py migrate
+python3 manage.py runserver
 ```
 
 # Overview
@@ -40,24 +40,37 @@ In order to achieve all of these results, it is necessary to send the **_Authori
 #### Note: Folder screenshots contains images for all operations.
 
 * [Authentication](#auth)
-  * Signup ```127.0.0.1:8000/accounts/register/```
-  * Login ```127.0.0.1:8000/accounts/login/```
+  * Signup ```http://127.0.0.1:8000/user/auth/registration/```
+  * Login ```http://127.0.0.1:8000/user/auth/login/```
+  * Logout ```http://127.0.0.1:8000/user/auth/logout/```
+  * Password-Reset-Send-Email ```http://127.0.0.1:8000/user/user/password-reset-email/```
+  * Password-Reset ```http://127.0.0.1:8000/user/user/reset-password/(?P<password_reset_id>.*)```
   
-* [CRUD Operations](#crud)
-  * All Tasks ```127.0.0.1:8000/me/all/```
-  * Create Task ```127.0.0.1:8000/tasks/```
-  * Retrieve specific task ```127.0.0.1:8000/tasks/id/``` Or ```127.0.0.1:8000/me/id/```
-  * Update Task ```127.0.0.1:8000/tasks/id/```
-  * Delete Task ```127.0.0.1:8000/tasks/id/```
+* Task [CRUD Operations](#crud)
+  * All Tasks ```http://127.0.0.1:8000/task/tasks/```
+  * Create Task ```http://127.0.0.1:8000/task/tasks/```
+  * Retrieve specific task ```http://127.0.0.1:8000/task/tasks/id/```
+  * Update Task ```http://127.0.0.1:8000/task/tasks/id/```
+  * Delete Task ```http://127.0.0.1:8000/task/tasks/id/```
+
+* Comment [CRUD Operations](#crud)
+  * All Comment ```http://127.0.0.1:8000/task/comments/```
+  * Create Comment ```http://127.0.0.1:8000/task/comments/```
+  * Retrieve specific Comment ```http://127.0.0.1:8000/task/comments/id/```
+  * Update Comment ```http://127.0.0.1:8000/task/comments/id/```
+  * Delete Comment ```http://127.0.0.1:8000/task/comments/id/```
+
+
 
 * [Filter Tasks](#filter)
-  * All Completed Tasks ```127.0.0.1:8000/me/completed/```
-  * All Incompleted Tasks ```127.0.0.1:8000/me/incompleted/```
+  * All Completed Tasks ```http://127.0.0.1:8000/task/tasks/?status=completed```
+  * All Incompleted Tasks ```http://127.0.0.1:8000/task/tasks/?status=in_completed```
   
 
-* [Export Data](#crud)
-  * Export as CSV ```127.0.0.1:8000/export/csv/```
-  * Export as XLS ```127.0.0.1:8000/export/xls/```
+* [Report ](#export)
+  * Task Completion Rate Over Time ```http://127.0.0.1:8000/task/task-completion-rate-over-time/```
+  * Task Progress Report ```http://127.0.0.1:8000/task/task-progress-report/```
+  * Task User Activity ```http://127.0.0.1:8000/task/user-activity-report/```
   
 [Raseedi]: http://www.raseedi.co/
 

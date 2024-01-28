@@ -23,11 +23,18 @@ class TaskViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAPIKEYAuthenticated, IsAuthenticated]
 
     def get_queryset(self):
+        status = self.request.query_params.get("status")
+        if status == "completed":
+            queryset = Task.objects.filter(completion_status=True)
+        elif status == "in_completed":
+            queryset = Task.objects.filter(completion_status=False)
+        else:
+            queryset = Task.objects.all()
         user = self.request.user
         if user.role == "admin":
-            return Task.objects.all()
+            return queryset
         elif user.role == "user":
-            return Task.objects.filter(Q(created_by=user) | Q(is_private=False))
+            return queryset(Q(created_by=user) | Q(is_private=False))
 
 
 class CommentViewSet(viewsets.ModelViewSet):
